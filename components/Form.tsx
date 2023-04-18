@@ -1,4 +1,4 @@
-import { Plus, PlusCircle, Pulse } from "@phosphor-icons/react"
+import {PlusCircle, Pulse } from "@phosphor-icons/react"
 import styles from "./Form.module.css"
 export function Form(){
   return(
