@@ -1,11 +1,13 @@
 .form,
 .form button {
 	display: flex;
-	justify-content: center;
 	gap: 0.5rem;
 }
 .form {
+	display: grid;
+	grid-template-columns: 1fr 90px;
 	margin-top: -3.125rem;
+	margin-bottom: 62px;
 }
 .form input {
 	background-color: var(--gray-500);
@@ -22,6 +24,8 @@
 	transition: outline ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
 }
 .form button {
+	display: flex;
+	justify-content: center;
 	background-color: var(--blue-dark);
 	color: white;
 	display: flex;
@@ -38,4 +42,10 @@
 .form button {
 	border-radius: 8px;
 	line-height: 1.4;
+}
+@media (max-width: 420px) {
+	.form {
+		grid-template-columns: 1fr;
+		
+	}
 }

@@ -36,3 +36,6 @@ button {
 button, input {
 	border:0;
 }
+ul, li{
+	list-style: none;
+}
