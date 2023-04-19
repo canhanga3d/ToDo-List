@@ -1,5 +1,5 @@
 export function ToDos() {
-	if (5 > 7) {
+	if (5 > 3) {
 		return (
 			<div>
 				<p>Legal</p>

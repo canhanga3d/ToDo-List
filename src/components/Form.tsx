@@ -5,7 +5,7 @@ export function Form(){
     <>
     <form className={styles.form}>
       <input type="text" name="" id="" placeholder="Descrição da tarefa"/>
-      <button type="submit">Criar <PlusCircle/> </button>
+      <button type="submit">Criar <PlusCircle size={20}/> </button>
     </form>
     </>
   )
