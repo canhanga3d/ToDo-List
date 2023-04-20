@@ -6,7 +6,7 @@ interface Todo {
 	isCompleted: boolean;
 }
 export function Tasks(props: { todos: Todo[]; }) {
-console.log(props);
+
 	const  {todos} = props;
 	return (
 		<>

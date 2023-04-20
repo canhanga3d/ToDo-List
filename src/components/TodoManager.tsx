@@ -10,7 +10,6 @@ interface Todo {
 	todo: string;
 	isCompleted: boolean;
 }
-
 export function TodoManager() {
 	const [newTasks, setNewTasks] = useState("");
 	const [todos, setTodos] = useState<Todo[]>([]);
@@ -31,6 +30,7 @@ export function TodoManager() {
 		setNewTasks("");
 	}
 
+
 	return (
 		<>
 			<form className={styles.form} onSubmit={handleCreateNewTodo}>
@@ -50,7 +50,11 @@ export function TodoManager() {
 				</button>
 			</form>
 			<Control />
-			{todos.length > 0 ? <Tasks todos={todos} /> : <Banner />}
+			{todos.length > 0 ? (
+				<Tasks todos={todos}  />
+			) : (
+				<Banner />
+			)}
 		</>
 	);
 }
