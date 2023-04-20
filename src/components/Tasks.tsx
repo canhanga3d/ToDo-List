@@ -1,6 +1,12 @@
 import { Trash } from "@phosphor-icons/react";
 import styles from "./Tasks.module.css";
-export function Tasks(props: TasksProps) {
+interface Todo {
+	id: string;
+	todo: string;
+	isCompleted: boolean;
+}
+export function Tasks(props: { todos: Todo[]; }) {
+console.log(props);
 	const  {todos} = props;
 	return (
 		<>
