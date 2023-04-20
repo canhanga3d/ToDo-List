@@ -22,6 +22,10 @@ export function TodoManager() {
 
 	function handleCreateNewTodo(e: FormEvent) {
 		e.preventDefault();
+		  if (!newTask.trim()) {
+			alert("Insira uma tarefa valida")
+				return;
+			}
 		const newTodo: Todo = {
 			id: uuid4(),
 			description: newTask,
