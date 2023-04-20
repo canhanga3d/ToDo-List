@@ -1,13 +1,21 @@
 import styles from "./Control.module.css";
-export function Control() {
+interface Iprops {
+	counterTask: number;
+	counterTaskCompleted: number;
+}
+export function Control({ counterTask, counterTaskCompleted }: Iprops) {
+	console.log();
 	return (
 		<>
 			<div className={styles.controller}>
 				<p>
-					todas tarefas <span>0</span>
+					todas tarefas <span>{counterTask}</span>
 				</p>
 				<p>
-					concluídas <span>0</span>
+					concluídas{" "}
+					<span>
+						{counterTaskCompleted} de {counterTask}
+					</span>
 				</p>
 			</div>
 		</>

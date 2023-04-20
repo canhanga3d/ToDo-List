@@ -22,10 +22,10 @@ export function TodoManager() {
 
 	function handleCreateNewTodo(e: FormEvent) {
 		e.preventDefault();
-		  if (!newTask.trim()) {
-			alert("Insira uma tarefa valida")
-				return;
-			}
+		if (!newTask.trim()) {
+			alert("Insira uma tarefa valida");
+			return;
+		}
 		const newTodo: Todo = {
 			id: uuid4(),
 			description: newTask,
@@ -47,6 +47,8 @@ export function TodoManager() {
 		);
 	}
 
+	const counterTaskCompleted = todos.filter((task) => task.completed).length;
+
 	return (
 		<>
 			<form className={styles.form} onSubmit={handleCreateNewTodo}>
@@ -65,7 +67,10 @@ export function TodoManager() {
 					Criar <PlusCircle size={20} />{" "}
 				</button>
 			</form>
-			<Control />
+			<Control
+				counterTask={todos.length}
+				counterTaskCompleted={counterTaskCompleted}
+			/>
 			{todos.length > 0 ? (
 				<Tasks
 					tasks={todos}
