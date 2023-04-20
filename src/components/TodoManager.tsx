@@ -5,31 +5,43 @@ import { Control } from "./Control";
 import { Banner } from "./Banner";
 import { Tasks } from "./Tasks";
 import styles from "./TodoManager.module.css";
+
 interface Todo {
 	id: string;
-	todo: string;
-	isCompleted: boolean;
+	description: string;
+	completed: boolean;
 }
+
 export function TodoManager() {
-	const [newTasks, setNewTasks] = useState("");
+	const [newTask, setNewTask] = useState("");
 	const [todos, setTodos] = useState<Todo[]>([]);
 
 	function handleNewTask(e: ChangeEvent<HTMLInputElement>) {
-		setNewTasks(e.target.value);
+		setNewTask(e.target.value);
 	}
 
 	function handleCreateNewTodo(e: FormEvent) {
-
 		e.preventDefault();
 		const newTodo: Todo = {
 			id: uuid4(),
-			todo: newTasks,
-			isCompleted: false,
+			description: newTask,
+			completed: false,
 		};
-		setTodos([...todos, newTodo]);
-		setNewTasks("");
+		setTodos((prevTodos) => [...prevTodos, newTodo]);
+		setNewTask("");
 	}
 
+	function deleteTask(taskId: string) {
+		setTodos((prevTodos) => prevTodos.filter((task) => task.id !== taskId));
+	}
+
+	function toggleCompleted(taskId: string) {
+		setTodos((prevTodos) =>
+			prevTodos.map((task) =>
+				task.id === taskId ? { ...task, completed: !task.completed } : task
+			)
+		);
+	}
 
 	return (
 		<>
@@ -38,7 +50,7 @@ export function TodoManager() {
 					type="text"
 					name="inTask"
 					id="inTask"
-					value={newTasks}
+					value={newTask}
 					onChange={handleNewTask}
 					placeholder="Descrição da tarefa"
 				/>
@@ -51,7 +63,11 @@ export function TodoManager() {
 			</form>
 			<Control />
 			{todos.length > 0 ? (
-				<Tasks todos={todos}  />
+				<Tasks
+					tasks={todos}
+					deleteTask={deleteTask}
+					toggleCompleted={toggleCompleted}
+				/>
 			) : (
 				<Banner />
 			)}
